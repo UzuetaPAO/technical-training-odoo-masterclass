@@ -21,6 +21,7 @@
                         <field name="garden_area"></field>
                         <field name="garden_orientation"></field>
                         <field name="active"></field>
+                        <field name="state"/>
 
                     </group>
                 </sheet>
@@ -33,9 +34,13 @@
         <field name="model">estate.property</field>
         <field name="arch" type="xml">
             <tree string="Estate Property">
-                <field name="name"></field>
-                <field name="description"></field>
-                <field name="date_availability"></field>
+                <field string="Title" name="name"></field>
+                <field name="postcode"></field>
+                <field name="bedrooms"></field>
+                <field string="Living Area (sqm)" name="living_area"></field>
+                <field name="expected_price"></field>
+                <field name="selling_price"></field>
+                <field string="Available From" name="date_availability"></field>
             </tree>
         </field>
     </record>
