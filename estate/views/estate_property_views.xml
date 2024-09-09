@@ -63,16 +63,13 @@
                             </group>
                         </page>
                         <page string="Offers">
-                            <group>
                                 <field name="offer_ids" widget="one2many_list">
                                     <tree>
                                         <field name="price"/>
                                         <field name="partner_id"/>
                                         <field name="status"/>
                                     </tree>
-
                                 </field>
-                            </group>
                         </page>
                         <page string="Other Info">
                             <group>
