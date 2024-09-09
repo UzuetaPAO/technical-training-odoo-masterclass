@@ -27,6 +27,8 @@ class EstateProperty(models.Model):
                                         selection = [('new', 'New'), ('offer_received', 'Offer Received'), ('offer_accepted', 'Offer Accepted'), ('sold', 'Sold'), ('cancel', 'Cancelled')]
                                         )
     
+    type = fields.Many2one("estate.property.type", string="Type")
+    
     class EstatePropertyType(models.Model):
         _name= "estate.property.type"
         _description="Estate Property Types"

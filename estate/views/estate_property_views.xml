@@ -58,6 +58,7 @@
                                 <field name="garden_orientation"/>
                                 <field name="active"/>
                                 <field name="state"/>
+                                <field name="type"/>
                             </group>
                         </page>
                     </notebook>
