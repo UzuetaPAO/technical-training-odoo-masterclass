@@ -37,6 +37,10 @@ class EstateProperty(models.Model):
     total_area = fields.Integer('Total Area', compute="_compute_total_area")
     best_price = fields.Float('Best Price', compute="_compute_best_price")
     
+    def action_set_offer(self, buyer, selling_price):
+        self.buyer = buyer.id
+        self.selling_price = selling_price
+        
     def action_sold_property(self):
         if self.state != 'cancel':
             self.state='sold'
@@ -89,6 +93,13 @@ class EstateProperty(models.Model):
         
         validity = fields.Integer('Validity', default=7)
         date_deadline = fields.Date('Date Deadline', compute="_compute_date_deadline", inverse="_inverse_date_deadline")
+        
+        def action_accept_offer(self):
+            self.status='accept'
+            self.property_id.set_offer(self.partner_id, self.price)
+            
+        def action_refuse_offer(self):
+            self.status='refuse'
         
         @api.depends("validity")
         def _compute_date_deadline(self):
