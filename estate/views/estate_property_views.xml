@@ -40,7 +40,7 @@
     </record>
 
     <record id="estate_property_action" model="ir.actions.act_window">
-        <field name="name">Estate Proerty</field>
+        <field name="name">Properties</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">estate.property</field>
         <field name="view_mode">tree,form</field>

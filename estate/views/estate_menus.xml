@@ -2,9 +2,9 @@
 <odoo>
 
     <menuitem id="menu_estates_app" name="Estates">
-        <menuitem id="menu_first_level_estates" name="First Level">
+        <menuitem id="menu_first_level_estates" name="Properties">
             <menuitem id="menu_estates_action" action="estate_property_action"/>
         </menuitem>
     </menuitem>
-    
+
 </odoo>
