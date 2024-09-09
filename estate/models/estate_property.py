@@ -7,6 +7,7 @@ class EstateProperty(models.Model):
     _name = "estate.property"
     _description = "Real Estate"
 
+    active = fields.Boolean(default=True)
     name = fields.Char('Name', required=True)
     description = fields.Text('Description')
     postcode = fields.Char('Postcode')
