@@ -1,7 +1,7 @@
 from datetime import date
 from dateutil.relativedelta import relativedelta
 
-from odoo import models, fields, api
+from odoo import models, fields, api, exceptions
 
 class EstateProperty(models.Model):
     _name = "estate.property"
@@ -35,6 +35,18 @@ class EstateProperty(models.Model):
     offer_ids = fields.One2many("estate.property.offer", "property_id", string="Offers")
     total_area = fields.Integer('Total Area', compute="_compute_total_area")
     best_price = fields.Float('Best Price', compute="_compute_best_price")
+    
+    def action_sold_property(self):
+        if self.state != 'cancel':
+            self.state='sold'
+        else:
+            exceptions.UserError("You cannot sold a cancelled property.")
+        
+    def action_cancel_property(self):
+        if self.state != 'sold':
+            self.state='cancel'
+        else:
+            exceptions.UserError("You cannot cancel a sold property.")
     
     @api.onchange("garden")
     def _onchange_garden(self):
