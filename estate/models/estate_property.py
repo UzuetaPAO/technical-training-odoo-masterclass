@@ -41,10 +41,10 @@ class EstateProperty(models.Model):
         for record in self:
             record.total_area = record.living_area + record.garden_area
             
-    @api.depends("offer_ids")
+    @api.depends("offer_ids.price")
     def _compute_best_price(self):
         for record in self:
-            record.best_price = max(record.offer_ids('price'))
+            record.best_price = max(record.offer_ids.mapped('price'))
     
     class EstatePropertyType(models.Model):
         _name= "estate.property.type"
