@@ -68,3 +68,15 @@ class EstateProperty(models.Model):
         status = fields.Selection(copy=False, selection=[('accept', 'Accepted'),('refuse', 'Refused')])
         partner_id = fields.Many2one('res.partner', string="Potential Buyer", required=True)
         property_id = fields.Many2one('estate.property', string="Estate Property", required=True)
+        
+        validity = fields.Integer('Validity', default=7)
+        date_deadline = fields.Date('Date Deadline', compute="_compute_date_deadline", inverse="compute_validity_days")
+        
+        @api.depends("validity")
+        def _compute_date_deadline(self):
+            for record in self:
+                record.date_deadline = record.create_date + relativedelta(days=record.validity)
+                
+        def compute_validity_days(self):
+            for record in self:
+                record.validity = abs((record.date_deadline - record.create_date).days)
