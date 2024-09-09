@@ -7,6 +7,7 @@
         </menuitem>
         <menuitem id="menu_settings_estates" name="Settings">
             <menuitem id="menu_property_types_action" action="estate_property_types_action"/>
+            <menuitem id="menu_property_tags_action" action="estate_property_tags_action"/>
         </menuitem>
     </menuitem>
 

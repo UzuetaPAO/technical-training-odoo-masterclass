@@ -23,7 +23,7 @@
         <field name="name">estate.property.type.form</field>
         <field name="model">estate.property.type</field>
         <field name="arch" type="xml">
-            <form string="Estate Property">
+            <form string="Property Types">
                 <sheet>
                     <div class="oe_title">
                         <h1>

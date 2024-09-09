@@ -34,6 +34,7 @@
                         <h1>
                             <field name="name"/>
                         </h1>
+                        <field name="tag_ids"/>
                     </div>
                     <group>
                         <group>
