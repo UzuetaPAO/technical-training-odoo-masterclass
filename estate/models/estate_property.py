@@ -26,3 +26,9 @@ class EstateProperty(models.Model):
     state = fields.Selection( default='new', required=True, copy=False,
                                         selection = [('new', 'New'), ('offer_received', 'Offer Received'), ('offer_accepted', 'Offer Accepted'), ('sold', 'Sold'), ('cancel', 'Cancelled')]
                                         )
+    
+    class EstatePropertyType(models.Model):
+        _name= "estate.property.type"
+        _description="Estate Property Types"
+        
+        name = fields.Char()

@@ -2,8 +2,11 @@
 <odoo>
 
     <menuitem id="menu_estates_app" name="Estates">
-        <menuitem id="menu_first_level_estates" name="Properties">
+        <menuitem id="menu_properties_estates" name="Properties">
             <menuitem id="menu_estates_action" action="estate_property_action"/>
+        </menuitem>
+        <menuitem id="menu_settings_estates" name="Settings">
+            <menuitem id="menu_estates_action" action="estate_property_types_action"/>
         </menuitem>
     </menuitem>
 
