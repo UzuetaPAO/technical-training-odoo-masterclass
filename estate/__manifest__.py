@@ -3,7 +3,7 @@
     "version": "16.0.0",  # Version
     "application": True,  # This line says the module is an App, and not a module
     "depends": ["base"],  # dependencies
-    'author': 'Manuel Uzueta test',
+    'author': 'Manuel Uzueta changed by Editor 2',
     "data": [
 
     ],
