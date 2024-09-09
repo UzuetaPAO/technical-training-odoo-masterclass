@@ -69,7 +69,7 @@
                             </group>
                         </page>
                         <page string="Offers">
-                            <field name="offer_ids" widget="one2many_list">
+                            <field name="offer_ids" widget="one2many_list" readonly="buyer or selling_price">
                                 <tree>
                                     <field name="price"/>
                                     <field name="partner_id"/>
