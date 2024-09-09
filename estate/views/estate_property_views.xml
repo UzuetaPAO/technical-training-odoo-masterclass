@@ -15,7 +15,7 @@
 
                 <separator/>
 
-                <filter name="filter_available" string="Available" domain="[(state, 'in', ['new', 'offer_received'])]"/>
+                <filter string="Available" name="filter_available" domain="[('state', 'in', ('new', 'offer_received'))]"/>
 
                 <separator/>
 
