@@ -60,6 +60,7 @@
                                 <field name="active"/>
                                 <field name="state"/>
                                 <field name="type"/>
+                                <field name="total_area"/>
                             </group>
                         </page>
                         <page string="Offers">
