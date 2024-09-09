@@ -29,7 +29,7 @@ class EstateProperty(models.Model):
     
     type = fields.Many2one("estate.property.type", string="Type")
     
-    salesman = fields.Many2one('res.user', string='Salesman')
+    salesman = fields.Many2one('res.users', string='Salesman')
     buyer = fields.Many2one('res.partner', string='Buyer')
     
     class EstatePropertyType(models.Model):
