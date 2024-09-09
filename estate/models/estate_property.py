@@ -75,8 +75,10 @@ class EstateProperty(models.Model):
         @api.depends("validity")
         def _compute_date_deadline(self):
             for record in self:
-                record.date_deadline = record.create_date + relativedelta(days=record.validity)
+                create_date = record.create_date if record.id else date.today()
+                record.date_deadline = create_date + relativedelta(days=record.validity)
                 
         def compute_validity_days(self):
             for record in self:
-                record.validity = abs((record.date_deadline - record.create_date).days)
+                create_date = record.create_date if record.id else date.today()
+                record.validity = abs((record.date_deadline - create_date).days)
