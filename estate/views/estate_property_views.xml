@@ -34,7 +34,7 @@
                         <h1>
                             <field name="name"/>
                         </h1>
-                        <field name="tag_ids"/>
+                        <field name="tag_ids" widget="many2many_tags"/>
                     </div>
                     <group>
                         <group>
@@ -60,6 +60,16 @@
                                 <field name="active"/>
                                 <field name="state"/>
                                 <field name="type"/>
+                            </group>
+                        </page>
+                        <page string="Offers">
+                            <group>
+                                <field name="offer_ids">
+                                    <field name="price"/>
+                                    <field name="partner_id"/>
+                                    <field name="status"/>
+
+                                </field>
                             </group>
                         </page>
                         <page string="Other Info">
