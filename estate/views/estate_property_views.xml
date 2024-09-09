@@ -61,10 +61,10 @@
                                 <field name="type"/>
                             </group>
                         </page>
-                        <page name="other_info" string="Other Info">
+                        <!-- <page name="other_info" string="Other Info">
                             <field name="salesman"/>
                             <field name="buyer"/>
-                        </page>
+                        </page> -->
                     </notebook>
                 </sheet>
             </form>
