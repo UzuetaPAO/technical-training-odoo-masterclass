@@ -96,7 +96,7 @@ class EstateProperty(models.Model):
         
         def action_accept_offer(self):
             self.status='accept'
-            self.property_id.set_offer(self.partner_id, self.price)
+            self.property_id.action_set_offer(self.partner_id, self.price)
             
         def action_refuse_offer(self):
             self.status='refuse'
