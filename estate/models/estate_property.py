@@ -29,6 +29,9 @@ class EstateProperty(models.Model):
     
     type = fields.Many2one("estate.property.type", string="Type")
     
+    salesman = fields.Many2one('res.user', 'Salesman')
+    buyer = fields.Many2one('res.partner', 'Buyer')
+    
     class EstatePropertyType(models.Model):
         _name= "estate.property.type"
         _description="Estate Property Types"
