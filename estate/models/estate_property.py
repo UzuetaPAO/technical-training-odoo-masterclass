@@ -7,11 +7,10 @@ class EstateProperty(models.Model):
     _name = "estate.property"
     _description = "Real Estate"
 
-
     name = fields.Char('Name', required=True)
     description = fields.Text('Description')
     postcode = fields.Char('Postcode')
-    date_availability = fields.Date('Date Availability', copy=False, default=date.today() + relativedelta(months=+3))
+    date_availability = fields.Date('Date Availability', copy=False, default=date.today() + relativedelta(months=3))
     expected_price = fields.Float('Expected Price', required=True)
     selling_price = fields.Float('Selling Price', readonly=True, copy=False)
     bedrooms = fields.Integer('Bedrooms', default=2)

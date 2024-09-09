@@ -20,6 +20,7 @@
                         <field name="garden"></field>
                         <field name="garden_area"></field>
                         <field name="garden_orientation"></field>
+                        <field name="active"></field>
 
                     </group>
                 </sheet>
