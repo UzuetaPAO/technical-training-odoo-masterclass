@@ -105,7 +105,7 @@ class EstateProperty(models.Model):
             return {
                 'type': 'ir.actions.act_window',
                 'name': 'Offers',
-                'view_mode': 'form',
+                'view_mode': 'tree',
                 'res_model': 'estate.property.offer',
             }
             
