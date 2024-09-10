@@ -157,6 +157,17 @@ class EstateProperty(models.Model):
             'An offer price must be strictly positive.')
         ]
         
+        @api.model
+        def create(self, vals):
+            offer_amount = vals.get('price')
+            
+            if offer_amount < max(self.ids.mapped('price')):
+                raise ValidationError("You can't create an offer with a lower amount than an existing offer.")
+            else:
+                result =  super().create(vals)
+                self.property_id.state = 'offer_received'
+                return result
+        
         @api.constrains('price')
         def _validate_price(self):
             for rec in self:
