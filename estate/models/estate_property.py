@@ -1,8 +1,8 @@
 from datetime import date
 from dateutil.relativedelta import relativedelta
 
-from odoo import models, fields, api
-from odoo.exceptions import UserError
+from odoo import models, fields, api, _
+from odoo.exceptions import UserError, ValidationError
 
 class EstateProperty(models.Model):
     _name = "estate.property"
@@ -37,6 +37,13 @@ class EstateProperty(models.Model):
     total_area = fields.Integer('Total Area', compute="_compute_total_area")
     best_price = fields.Float('Best Price', compute="_compute_best_price")
     
+    _sql_constraints = [
+        ('check_expected_price', 'CHECK(expected_price > 0)',
+        'A property expected price must be strictly positive.'),
+        ('check_selling_price', 'CHECK(selling_price > 0)',
+        'A property selling price must be positive.'),
+    ]
+        
     def action_set_offer(self, buyer, selling_price):
         self.buyer = buyer.id
         self.selling_price = selling_price
@@ -74,13 +81,23 @@ class EstateProperty(models.Model):
         _name= "estate.property.type"
         _description="Estate Property Types"
         
-        name = fields.Char()
+        name = fields.Char(unique=True)
+        
+        _sql_constraints = [
+            ('unique_type_name', 'UNIQUE(name)',
+            'Types must be unique.')
+        ]
         
     class EstatePropertyTag(models.Model):
         _name="estate.property.tag"
         _description = "Estate Property Tags"
         
         name = fields.Char()
+        
+        _sql_constraints = [
+            ('unique_tag_name', 'UNIQUE(name)',
+            'Tags must be unique.')
+        ]
         
     class EstatePropertyOffer(models.Model):
         _name = "estate.property.offer"
@@ -94,6 +111,18 @@ class EstateProperty(models.Model):
         validity = fields.Integer('Validity', default=7)
         date_deadline = fields.Date('Date Deadline', compute="_compute_date_deadline", inverse="_inverse_date_deadline")
         
+        _sql_constraints = [
+            ('check_price', 'CHECK(price > 0)',
+            'An offer price must be strictly positive.')
+        ]
+        
+        @api.constrains('price')
+        def _validate_price(self):
+            for rec in self:
+                if rec.price < 1:
+                    msg = _('An offer price must be strictly positive')
+                    raise ValidationError(msg)
+            
         def action_accept_offer(self):
             self.status='accept'
             self.property_id.action_set_offer(self.partner_id, self.price)
