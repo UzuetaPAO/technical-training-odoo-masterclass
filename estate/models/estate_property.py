@@ -9,9 +9,17 @@ class EstateProperty(models.Model):
     _description = "Real Estate"
 
     _sql_constraints = [
-        ('check_expected_price','CHECK(expected_price >= 0)','A property expected price must be strictly positive.'),
-        ('check_selling_price','CHECK(selling_price >= 0)','A property selling price must be strictly positive.')
+        ('expected_price_check_zero',
+         'CHECK(expected_price >= 0)',
+         "A property expected price must be strictly positive"),
+        ('selling_price_check_zero',
+         'CHECK(selling_price >= 0)',
+         "A property selling price must be positive"),
     ]
+    # _sql_constraints = [
+    #     ('check_expected_price','CHECK(expected_price >= 0)','A property expected price must be strictly positive.'),
+    #     ('check_selling_price','CHECK(selling_price >= 0)','A property selling price must be strictly positive.')
+    # ]
     active = fields.Boolean(default=True)
     name = fields.Char('Name', required=True)
     description = fields.Text('Description')
