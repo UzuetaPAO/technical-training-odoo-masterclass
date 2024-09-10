@@ -71,7 +71,7 @@
                         </page>
                         <page string="Offers">
                             <field name="offer_ids" widget="one2many_list" readonly="buyer or selling_price or state in ('sold', 'cancel', 'offer_accepted')">
-                                <tree>
+                                <tree editable="True">
                                     <field name="price"/>
                                     <field name="partner_id"/>
                                     <field name="validity"/>
@@ -105,7 +105,7 @@
                 <field string="Living Area (sqm)" name="living_area"/>
                 <field name="expected_price"/>
                 <field name="selling_price"/>
-                <field string="Available From" name="date_availability"/>
+                <field string="Available From" name="date_availability" optional="True"/>
             </tree>
         </field>
     </record>
