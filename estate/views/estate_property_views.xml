@@ -9,9 +9,9 @@
                 <field name="name"/>
                 <field name="postcode"/>
                 <field name="expected_price"/>
-                <field name="bedrooms"/>
-                <field name="living_area"/>
                 <field name="facades"/>
+                <field name="bedrooms"/>
+                <field name="living_area" string="Name and description" filter_domain="[('living_area', '&gt;', self)]"/>
 
                 <separator/>
 
