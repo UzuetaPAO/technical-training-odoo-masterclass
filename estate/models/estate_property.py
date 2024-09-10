@@ -98,6 +98,12 @@ class EstateProperty(models.Model):
         name = fields.Char(unique=True)
         property_ids = fields.One2many('estate.property', 'type', string="Properties")
         sequence = fields.Integer('Sequence', default=1, help="Used to order property type.")
+        offer_ids = fields.One2many("estate.property.offer", "property_type_id", string="Offers")
+        offer_count = fields.Integer('Offers Count', compute="_compute_offer_counts")
+        
+        def _compute_offer_counts(self):
+            for record in self:
+                record.offer_count = len(record.offer_ids)
         
         _sql_constraints = [
             ('unique_type_name', 'UNIQUE(name)',
@@ -126,6 +132,7 @@ class EstateProperty(models.Model):
         status = fields.Selection(copy=False, readonly=True, selection=[('accept', 'Accepted'),('refuse', 'Refused')])
         partner_id = fields.Many2one('res.partner', string="Potential Buyer", required=True)
         property_id = fields.Many2one('estate.property', string="Estate Property", required=True)
+        property_type_id = fields.Many2one('estate.property.type', related='property_id.type', string="Property Type", store=True)
         
         validity = fields.Integer('Validity', default=7)
         date_deadline = fields.Date('Date Deadline', compute="_compute_date_deadline", inverse="_inverse_date_deadline")
