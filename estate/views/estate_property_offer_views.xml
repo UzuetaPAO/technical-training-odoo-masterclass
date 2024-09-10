@@ -22,6 +22,5 @@
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">estate.property.offer</field>
         <field name="view_mode">tree</field>
-        </field>
     </record>
 </odoo>
