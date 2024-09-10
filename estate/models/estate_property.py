@@ -96,7 +96,7 @@ class EstateProperty(models.Model):
         
         name = fields.Char(unique=True)
         property_ids = fields.One2many('estate.property', 'type', string="Properties")
-        sequence = fields.Integer('Sequence', default=1, help="Used to order property tyeps.")
+        sequence = fields.Integer('Sequence', default=1, help="Used to order property type.")
         
         _sql_constraints = [
             ('unique_type_name', 'UNIQUE(name)',
@@ -109,6 +109,7 @@ class EstateProperty(models.Model):
         _order = "name"
         
         name = fields.Char()
+        color = fields.Integer()
         
         _sql_constraints = [
             ('unique_tag_name', 'UNIQUE(name)',

@@ -22,6 +22,9 @@
                             <field name="name"/>
                         </h1>
                     </div>
+                    <group>
+                        <field name="color" widget="color_picker"/>
+                    </group>
                 </sheet>
             </form>
         </field>
