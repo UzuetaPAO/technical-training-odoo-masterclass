@@ -59,6 +59,7 @@ class EstateProperty(models.Model):
     def action_set_offer(self, buyer, selling_price):
         self.buyer = buyer.id
         self.selling_price = selling_price
+        self.state = 'offer_accepted'
         
     def action_sold_property(self):
         if self.state != 'cancel':
