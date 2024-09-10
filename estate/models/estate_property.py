@@ -38,11 +38,9 @@ class EstateProperty(models.Model):
     best_price = fields.Float('Best Price', compute="_compute_best_price")
     
     _sql_constraints = [
-        ('check_expected_price', 'CHECK(expected_price > 0)',
-        'A property expected price must be strictly positive.'),
-        ('check_selling_price', 'CHECK(selling_price > 0)',
-        'A property selling price must be positive.'),
-    ]
+            ('check_expected_price', 'CHECK(check_expected_price)',
+            'A property expected price must be strictly positive.')
+        ]
         
     def action_set_offer(self, buyer, selling_price):
         self.buyer = buyer.id
