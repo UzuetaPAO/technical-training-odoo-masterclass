@@ -7,6 +7,7 @@ from odoo.exceptions import UserError, ValidationError
 class EstateProperty(models.Model):
     _name = "estate.property"
     _description = "Real Estate"
+    _order = "id desc"
 
     _sql_constraints = [
         ('expected_price_check_zero',
@@ -91,6 +92,7 @@ class EstateProperty(models.Model):
     class EstatePropertyType(models.Model):
         _name= "estate.property.type"
         _description="Estate Property Types"
+        _order = "name"
         
         name = fields.Char(unique=True)
         property_ids = fields.One2many('estate.property', 'type', string="Properties")
@@ -103,6 +105,7 @@ class EstateProperty(models.Model):
     class EstatePropertyTag(models.Model):
         _name="estate.property.tag"
         _description = "Estate Property Tags"
+        _order = "name"
         
         name = fields.Char()
         
@@ -114,6 +117,7 @@ class EstateProperty(models.Model):
     class EstatePropertyOffer(models.Model):
         _name = "estate.property.offer"
         _description = "Estate Property Offer"
+        _order = "price desc"
         
         price = fields.Float()
         status = fields.Selection(copy=False, readonly=True, selection=[('accept', 'Accepted'),('refuse', 'Refused')])
