@@ -49,7 +49,12 @@ class EstateProperty(models.Model):
     total_area = fields.Integer('Total Area', compute="_compute_total_area")
     best_price = fields.Float('Best Price', compute="_compute_best_price")
     
-        
+    @api.constrains('selling_price')
+    def _check_selling_price(self):
+        for record in self:
+            if record.selling_price < (record.expected_price * 0.9):
+                raise ValidationError('The selling price must be at least 90%\ of the expected price')
+    
     def action_set_offer(self, buyer, selling_price):
         self.buyer = buyer.id
         self.selling_price = selling_price
