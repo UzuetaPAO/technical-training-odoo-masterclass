@@ -8,6 +8,10 @@ class EstateProperty(models.Model):
     _name = "estate.property"
     _description = "Real Estate"
 
+    _sql_constraints = [
+        ('check_expected_price','CHECK(expected_price > 0)','A property expected price must be strictly positive.'),
+        ('check_selling_price','CHECK(selling_price > 0)','A property selling price must be strictly positive.')
+    ]
     active = fields.Boolean(default=True)
     name = fields.Char('Name', required=True)
     description = fields.Text('Description')
@@ -37,10 +41,6 @@ class EstateProperty(models.Model):
     total_area = fields.Integer('Total Area', compute="_compute_total_area")
     best_price = fields.Float('Best Price', compute="_compute_best_price")
     
-    _sql_constraints = [
-        ('check_expected_price','CHECK(expected_price > 0)','A property expected price must be strictly positive.'),
-        ('check_selling_price','CHECK(selling_price > 0)','A property selling price must be strictly positive.')
-    ]
         
     def action_set_offer(self, buyer, selling_price):
         self.buyer = buyer.id
