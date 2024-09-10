@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="inherited_model_view_form" model="ir.ui.view">
+        <field name="name">inherited.model.form.inherit.test</field>
+        <field name="model">inherited.model</field>
+        <field name="inherit_id" ref="inherited.inherited_model_view_form"/>
+        <field name="arch" type="xml">
+            <!-- find field description and add the field
+             new_field after it -->
+            <xpath expr="//field[@name='description']" position="after">
+                <field name="new_field"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
