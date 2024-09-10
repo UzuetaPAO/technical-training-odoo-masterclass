@@ -50,6 +50,11 @@ class EstateProperty(models.Model):
     total_area = fields.Integer('Total Area', compute="_compute_total_area")
     best_price = fields.Float('Best Price', compute="_compute_best_price")
     
+    @api.ondelete(at_uninstall=False)
+    def _unlink_property_validation(self):
+        if self.state not in ('new', 'cancel'):
+            raise UserError("You only can delete New or Cancelled properties.")
+    
     @api.constrains('selling_price')
     def _check_selling_price(self):
         for record in self:
