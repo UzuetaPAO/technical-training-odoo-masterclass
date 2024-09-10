@@ -60,7 +60,7 @@ class EstateProperty(models.Model):
     def _check_selling_price(self):
         for record in self:
             if record.selling_price < (record.expected_price * 0.9):
-                raise ValidationError('The selling price must be at least 90%\ of the expected price')
+                raise ValidationError('The selling price must be at least 90% of the expected price')
     
     def action_set_offer(self, buyer, selling_price):
         self.buyer = buyer.id
