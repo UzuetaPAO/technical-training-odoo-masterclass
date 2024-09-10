@@ -70,17 +70,7 @@
                             </group>
                         </page>
                         <page string="Offers">
-                            <field name="offer_ids" widget="one2many_list" readonly="buyer or selling_price or state in ('sold', 'cancel', 'offer_accepted')">
-                                <tree editable="True" decoration-danger="status=='refuse'" decoration-success="status=='accept'">
-                                    <field name="price"/>
-                                    <field name="partner_id"/>
-                                    <field name="validity"/>
-                                    <field name="date_deadline"/>
-                                    <button name="action_accept_offer" invisible="status" string="Accept" type="object" icon="fa-level-down"/>
-                                    <button name="action_refuse_offer" invisible="status" string="Refuse" type="object" icon="fa-times"/>
-                                    <field name="status" column_invisible="1"/>
-                                </tree>
-                            </field>
+                            <field name="offer_ids" widget="one2many_list" readonly="buyer or selling_price or state in ('sold', 'cancel', 'offer_accepted')"/>
                         </page>
                         <page string="Other Info">
                             <group>

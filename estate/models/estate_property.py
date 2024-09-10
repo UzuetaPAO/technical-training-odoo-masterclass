@@ -106,6 +106,7 @@ class EstateProperty(models.Model):
                 'type': 'ir.actions.act_window',
                 'name': 'Offers',
                 'view_mode': 'tree',
+                'domain': "[('property_type_id', '=', active_id)]",
                 'res_model': 'estate.property.offer',
             }
             
