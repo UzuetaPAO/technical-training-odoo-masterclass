@@ -127,11 +127,11 @@
                                 </div>
                                 <div class="o_kanban_body">
                                     <t t-if="record.state.raw_value == 'offer_received'">
-                                        <label>Expected Price:</label>
+                                        Expected Price: 
                                         <span t-field="record.expected_price"/>
                                     </t>
                                     <t t-if="record.state.raw_value == 'offer_accepted'">
-                                        <label>Selling Price:</label>
+                                        Selling Price:  
                                         <span t-field="record.selling_price"/>
                                     </t>
                                     <field name="tag_ids"/>
