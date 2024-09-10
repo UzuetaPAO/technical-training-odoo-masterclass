@@ -121,8 +121,8 @@
                         <div class="oe_kanban_global_click">
                             <field name="name"/>
                             <field name="expected_price"/>
-                            <field t-if="record.state.raw_value == 'offer_received'" name="best_price"/>
-                            <field  t-if="record.state.raw_value == 'offer_accepted'" name="selling_price"/>
+                            <field t-if="record.state.value == 'offer_received'" name="best_price"/>
+                            <field  t-if="record.state.value == 'offer_accepted'" name="selling_price"/>
                             <field name="tag_ids"/>
                         </div>
                     </t>
