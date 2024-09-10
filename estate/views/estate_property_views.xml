@@ -118,16 +118,25 @@
             <kanban>
                 <templates>
                     <t t-name="kanban-box">
-                        <div class="oe_kanban_global_click">
-                            <field decoration-bf="1" name="name"/>
-                            <field name="expected_price"/>
-                            <div t-if="record.state == 'offer_received'">
-                                Expected price: <field name="best_price"/>
+                        <div class="oe_kanban_global_click o_kanban_record">
+                            <div>
+                                <div class="o_kanban_header">
+                                    <strong>
+                                        <field name="name"/>
+                                    </strong>
+                                </div>
+                                <div class="o_kanban_body">
+                                    <t t-if="record.state.raw_value == 'offer_received'">
+                                        <label>Expected Price:</label>
+                                        <span t-field="record.expected_price"/>
+                                    </t>
+                                    <t t-if="record.state.raw_value == 'offer_accepted'">
+                                        <label>Selling Price:</label>
+                                        <span t-field="record.selling_price"/>
+                                    </t>
+                                    <field name="tag_ids"/>
+                                </div>
                             </div>
-                            <div t-if="record.state == 'offer_accepted'">
-                                Selling price: <field name="selling_price"/>
-                            </div>
-                            <field name="tag_ids"/>
                         </div>
                     </t>
                 </templates>
