@@ -160,8 +160,9 @@ class EstateProperty(models.Model):
         @api.model
         def create(self, vals):
             offer_amount = vals.get('price')
-            
-            if offer_amount < max(self.env['estate.property.offer'].search([('property_id','=',vals.get('property_id'))]).mapped('price')):
+            current_offers = self.env['estate.property.offer'].search([('property_id','=',vals.get('property_id'))]).mapped('price')
+            top_offer = max(current_offers) if current_offers and len(current_offers) else 0.0
+            if offer_amount < top_offer:
                 raise ValidationError("You can't create an offer with a lower amount than an existing offer.")
             else:
                 result = super().create(vals)
