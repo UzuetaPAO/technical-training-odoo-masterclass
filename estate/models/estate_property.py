@@ -52,8 +52,9 @@ class EstateProperty(models.Model):
     
     @api.ondelete(at_uninstall=False)
     def _unlink_property_validation(self):
-        if self.state not in ('new', 'cancel'):
-            raise UserError("You only can delete New or Cancelled properties.")
+        for record in self:
+            if record.state not in ('new', 'cancel'):
+                raise UserError("You only can delete New or Cancelled properties.")
     
     @api.constrains('selling_price')
     def _check_selling_price(self):
