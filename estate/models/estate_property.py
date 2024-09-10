@@ -101,6 +101,14 @@ class EstateProperty(models.Model):
         offer_ids = fields.One2many("estate.property.offer", "property_type_id", string="Offers")
         offer_count = fields.Integer('Offers Count', compute="_compute_offer_counts")
         
+        def action_goto_offers(self):
+            return {
+                'type': 'ir.actions.act_window',
+                'name': 'Offers',
+                'view_mode': 'form',
+                'res_model': 'estate.property.offer',
+            }
+            
         def _compute_offer_counts(self):
             for record in self:
                 record.offer_count = len(record.offer_ids)
