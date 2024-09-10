@@ -11,7 +11,7 @@
                 <field name="expected_price"/>
                 <field name="facades"/>
                 <field name="bedrooms"/>
-                <field name="living_area" string="Name and description" filter_domain="[('living_area', '&gt;', self)]"/>
+                <field name="living_area" string="Living Area" filter_domain="[('living_area', '&gt;', self)]"/>
 
                 <separator/>
 
