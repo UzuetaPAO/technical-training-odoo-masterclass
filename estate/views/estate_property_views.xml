@@ -142,6 +142,9 @@
                         </div>
                     </t>
                 </templates>
+                <group_by>
+                    <field name="type"/>
+                </group_by>
             </kanban>
         </field>
     </record>
