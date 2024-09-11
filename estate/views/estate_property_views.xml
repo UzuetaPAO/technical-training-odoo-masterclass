@@ -115,7 +115,7 @@
         <field name="name">estate.property.kanban</field>
         <field name="model">estate.property</field>
         <field name="arch" type="xml">
-            <kanban>
+            <kanban default_group_by="type">
                 <field name="name"/>
                 <field name="state"/>
                 <templates>
@@ -142,9 +142,6 @@
                         </div>
                     </t>
                 </templates>
-                <group_by>
-                    <field name="type"/>
-                </group_by>
             </kanban>
         </field>
     </record>
